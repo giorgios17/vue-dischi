@@ -8,17 +8,19 @@
       :Author="song.author"
       :Year="song.year"
     />
+    <LoadingComponent />
   </main>
 </template>
-
 <script>
 import SongItem from "@/components/SongItem.vue";
+import LoadingComponent from "@/components/LoadingComponent.vue";
 import axios from "axios";
 
 export default {
   name: "SongList",
   components: {
     SongItem,
+    LoadingComponent,
   },
   data() {
     return {
