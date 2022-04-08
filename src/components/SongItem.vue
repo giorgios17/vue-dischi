@@ -1,11 +1,5 @@
 <template>
   <div>
-    <!-- <div class="gs-card" v-for="(song, index) in allSong" :key="index">
-      <img :src="song.poster" :alt="song.author" />
-      <h3>{{ song.title }}</h3>
-      <p>{{ song.author }}</p>
-      <p>{{ song.year }}</p>
-    </div> -->
     <div class="gs-card">
       <img :src="Img" :alt="Author" />
       <h3>{{ Title }}</h3>
