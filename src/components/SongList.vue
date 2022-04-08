@@ -47,9 +47,14 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/assets/style/variables";
+
 main {
-  background-color: $bg-main;
-  padding: 50px;
+  width: 70%;
+  margin: auto;
+  padding: 80px 0;
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
 }
 </style>

@@ -32,10 +32,12 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/assets/style/variables";
-@import "~bootstrap";
 .gs-card {
   text-align: center;
   background-color: $bg-card;
+  padding: 20px 0;
+  width: 250px;
+  height: 320px;
   h3 {
     color: $title-color;
   }
