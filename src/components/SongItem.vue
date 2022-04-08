@@ -35,14 +35,20 @@ export default {
 .gs-card {
   text-align: center;
   background-color: $bg-card;
-  padding: 20px 0;
-  width: 250px;
-  height: 320px;
+  padding: 20px 15px;
+  width: 200px;
+  min-height: 340px;
+  margin: 10px 20px;
   h3 {
     color: $title-color;
+    margin-top: 10px;
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: bold;
   }
   p {
     color: $description-color;
+    margin: 0;
   }
   img {
     width: 150px;
