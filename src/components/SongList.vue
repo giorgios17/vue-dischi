@@ -1,14 +1,21 @@
 <template>
   <main>
-    <SongItem
-      :key="index"
-      v-for="(song, index) in allSong"
-      :Img="song.poster"
-      :Title="song.title"
-      :Author="song.author"
-      :Year="song.year"
-    />
-    <LoadingComponent />
+    <div
+      v-if="allSong.length > 0"
+      class="container d-flex flex-wrap justify-content-center"
+    >
+      <SongItem
+        :key="index"
+        v-for="(song, index) in allSong"
+        :Img="song.poster"
+        :Title="song.title"
+        :Author="song.author"
+        :Year="song.year"
+      />
+    </div>
+    <div v-else>
+      <LoadingComponent />
+    </div>
   </main>
 </template>
 <script>
@@ -54,8 +61,5 @@ main {
   width: 70%;
   margin: auto;
   padding: 80px 0;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
 }
 </style>

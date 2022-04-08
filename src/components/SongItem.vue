@@ -1,11 +1,9 @@
 <template>
-  <div>
-    <div class="gs-card">
-      <img :src="Img" :alt="Author" />
-      <h3>{{ Title }}</h3>
-      <p>{{ Author }}</p>
-      <p>{{ Year }}</p>
-    </div>
+  <div class="gs-card">
+    <img class="img-fluid" :src="Img" :alt="Author" />
+    <h5>{{ Title }}</h5>
+    <p>{{ Author }}</p>
+    <p>{{ Year }}</p>
   </div>
 </template>
 
@@ -32,26 +30,29 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/assets/style/variables";
+
+@media screen and (max-width: 1460px) {
+  h5,
+  p {
+    font-size: 0.8rem;
+  }
+}
 .gs-card {
   text-align: center;
   background-color: $bg-card;
   padding: 20px 15px;
   width: 200px;
-  min-height: 340px;
   margin: 10px 20px;
-  h3 {
+  h5 {
     color: $title-color;
     margin-top: 10px;
     text-transform: uppercase;
-    font-size: 20px;
     font-weight: bold;
+    padding: 0px 5px;
   }
   p {
     color: $description-color;
     margin: 0;
-  }
-  img {
-    width: 150px;
   }
 }
 </style>
