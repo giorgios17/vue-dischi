@@ -1,9 +1,17 @@
 <template>
-  <div class="card">
-    <img :src="allSong.poster" :alt="allSong.author" />
-    <h3>{{ allSong.title }}</h3>
-    <p>{{ allSong.author }}</p>
-    <p>{{ allSong.year }}</p>
+  <div>
+    <!-- <div class="gs-card" v-for="(song, index) in allSong" :key="index">
+      <img :src="song.poster" :alt="song.author" />
+      <h3>{{ song.title }}</h3>
+      <p>{{ song.author }}</p>
+      <p>{{ song.year }}</p>
+    </div> -->
+    <div class="gs-card">
+      <img :src="Img" :alt="Author" />
+      <h3>{{ Title }}</h3>
+      <p>{{ Author }}</p>
+      <p>{{ Year }}</p>
+    </div>
   </div>
 </template>
 
@@ -19,6 +27,13 @@ import axios from "axios";
 
 export default {
   name: "SongItem",
+  props: {
+    Song: Array,
+    Img: String,
+    Title: String,
+    Author: String,
+    Year: String,
+  },
   data() {
     return {
       allSong: [],
@@ -32,8 +47,12 @@ export default {
       axios
         .get("https://flynn.boolean.careers/exercises/api/array/music")
         .then((response) => {
-          this.allSong.push(response.data.response);
-          console.table(this.allSong);
+          const song = response.data;
+          for (let i = 0; i < song.response.length; i++) {
+            this.allSong.push(song.response[i]);
+          }
+
+          console.log(this.allSong);
         });
     },
   },
@@ -41,5 +60,19 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "@/assets/style/variables";
 @import "~bootstrap";
+.gs-card {
+  text-align: center;
+  background-color: $bg-card;
+  h3 {
+    color: $title-color;
+  }
+  p {
+    color: $description-color;
+  }
+  img {
+    width: 150px;
+  }
+}
 </style>

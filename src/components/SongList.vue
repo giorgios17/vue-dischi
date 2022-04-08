@@ -1,7 +1,14 @@
 <template>
-  <div>
-    <SongItem />
-  </div>
+  <main>
+    <SongItem
+      :key="index"
+      v-for="(song, index) in allSong"
+      :Img="song.poster"
+      :Title="song.title"
+      :Author="song.author"
+      :Year="song.year"
+    />
+  </main>
 </template>
 
 <script>
@@ -17,4 +24,9 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/assets/style/variables";
+main {
+  background-color: $bg-main;
+  padding: 50px;
+  display: flex;
+}
 </style>

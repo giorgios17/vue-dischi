@@ -21,7 +21,7 @@ export default {
 @import "@/assets/style/variables";
 header {
   background-color: $bg-header;
-  padding: 10px;
+  padding: 10px 20px;
   display: flex;
   justify-content: flex-start;
   img {
