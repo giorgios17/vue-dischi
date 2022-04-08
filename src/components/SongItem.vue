@@ -23,7 +23,6 @@ poster: "https://www.onstageweb.com/wp-content/uploads/2018/09/bon-jovi-new-jers
 title: "New Jersey"
 year: "1988"
 */
-import axios from "axios";
 
 export default {
   name: "SongItem",
@@ -33,28 +32,6 @@ export default {
     Title: String,
     Author: String,
     Year: String,
-  },
-  data() {
-    return {
-      allSong: [],
-    };
-  },
-  mounted() {
-    this.generateCard();
-  },
-  methods: {
-    generateCard() {
-      axios
-        .get("https://flynn.boolean.careers/exercises/api/array/music")
-        .then((response) => {
-          const song = response.data;
-          for (let i = 0; i < song.response.length; i++) {
-            this.allSong.push(song.response[i]);
-          }
-
-          console.log(this.allSong);
-        });
-    },
   },
 };
 </script>
