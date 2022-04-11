@@ -1,7 +1,7 @@
 <template>
   <main>
     <select @change="filterByGenre($event)">
-      <option value="All">All</option>
+      <option value="">All</option>
       <option value="Rock">Rock</option>
       <option value="Pop">Pop</option>
       <option value="Jazz">Jazz</option>
@@ -59,8 +59,8 @@ export default {
     },
     filterByGenre(event) {
       this.showGenre = event.target.value;
-      this.filtered = this.allSong.filter(
-        (element) => element.genre === this.showGenre
+      this.filtered = this.allSong.filter((element) =>
+        element.genre.includes(this.showGenre)
       );
       console.log(this.filtered);
     },
