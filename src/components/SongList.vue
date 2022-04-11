@@ -1,7 +1,7 @@
 <template>
   <main>
     <select @change="filterByGenre($event)">
-      <!-- <option value="All">All</option> -->
+      <option value="All">All</option>
       <option value="Rock">Rock</option>
       <option value="Pop">Pop</option>
       <option value="Jazz">Jazz</option>
@@ -13,7 +13,7 @@
     >
       <SongItem
         :key="index"
-        v-for="(song, index) in allSong"
+        v-for="(song, index) in filtered"
         :Img="song.poster"
         :Title="song.title"
         :Author="song.author"
@@ -40,6 +40,7 @@ export default {
     return {
       allSong: [],
       showGenre: "",
+      filtered: [],
     };
   },
   mounted() {
@@ -54,15 +55,14 @@ export default {
           for (let i = 0; i < song.response.length; i++) {
             this.allSong.push(song.response[i]);
           }
-          console.log(this.allSong);
         });
     },
     filterByGenre(event) {
       this.showGenre = event.target.value;
-      this.allSong.filter((element) => {
-        element.genre === this.showGenre;
-      });
-      console.log(this.showGenre);
+      this.filtered = this.allSong.filter(
+        (element) => element.genre === this.showGenre
+      );
+      console.log(this.filtered);
     },
   },
 };
