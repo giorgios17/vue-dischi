@@ -1,6 +1,6 @@
 <template>
   <main>
-    <select @change="filterByGenre($event)">
+    <select @change="selectedLabel($event)">
       <option value="">All</option>
       <option value="Rock">Rock</option>
       <option value="Pop">Pop</option>
@@ -13,7 +13,7 @@
     >
       <SongItem
         :key="index"
-        v-for="(song, index) in filtered"
+        v-for="(song, index) in filteredSongByGenre()"
         :Img="song.poster"
         :Title="song.title"
         :Author="song.author"
@@ -57,12 +57,13 @@ export default {
           }
         });
     },
-    filterByGenre(event) {
+    selectedLabel(event) {
       this.showGenre = event.target.value;
-      this.filtered = this.allSong.filter((element) =>
+    },
+    filteredSongByGenre() {
+      return this.allSong.filter((element) =>
         element.genre.includes(this.showGenre)
       );
-      console.log(this.filtered);
     },
   },
 };
