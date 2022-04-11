@@ -1,5 +1,12 @@
 <template>
   <main>
+    <select @change="filterByGenre($event)">
+      <!-- <option value="All">All</option> -->
+      <option value="Rock">Rock</option>
+      <option value="Pop">Pop</option>
+      <option value="Jazz">Jazz</option>
+      <option value="Metal">Metal</option>
+    </select>
     <div
       v-if="allSong.length > 0"
       class="container d-flex flex-wrap justify-content-center"
@@ -32,6 +39,7 @@ export default {
   data() {
     return {
       allSong: [],
+      showGenre: "",
     };
   },
   mounted() {
@@ -46,9 +54,15 @@ export default {
           for (let i = 0; i < song.response.length; i++) {
             this.allSong.push(song.response[i]);
           }
-
           console.log(this.allSong);
         });
+    },
+    filterByGenre(event) {
+      this.showGenre = event.target.value;
+      this.allSong.filter((element) => {
+        element.genre === this.showGenre;
+      });
+      console.log(this.showGenre);
     },
   },
 };
