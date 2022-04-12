@@ -2,10 +2,13 @@
   <main>
     <select @change="selectedLabel($event)">
       <option value="">All</option>
-      <option value="Rock">Rock</option>
+      <!-- <option value="Rock">Rock</option>
       <option value="Pop">Pop</option>
       <option value="Jazz">Jazz</option>
-      <option value="Metal">Metal</option>
+      <option value="Metal">Metal</option> -->
+      <option v-for="genere in uniqueGenre()" :key="genere" :value="genere">
+        {{ genere }}
+      </option>
     </select>
     <div
       v-if="allSong.length > 0"
@@ -63,6 +66,15 @@ export default {
       return this.allSong.filter((element) =>
         element.genre.includes(this.showGenre)
       );
+    },
+    uniqueGenre() {
+      const uniqueGenre = [];
+      for (let i = 0; i < this.allSong.length; i++) {
+        if (!uniqueGenre.includes(this.allSong[i].genre)) {
+          uniqueGenre.push(this.allSong[i].genre);
+        }
+      }
+      return uniqueGenre;
     },
   },
 };
